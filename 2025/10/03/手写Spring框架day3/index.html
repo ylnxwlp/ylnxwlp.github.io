@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://github.com/ylnxwlp/ylnxwlp.github.io/2025/10/02/手写spring框架day2/"/>
+    <link rel="canonical" href="https://github.com/ylnxwlp/ylnxwlp.github.io/2025/10/03/手写spring框架day3/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -23,14 +23,14 @@
         
         <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="手写Spring框架Day2">
-<meta property="og:url" content="https://github.com/ylnxwlp/ylnxwlp.github.io/2025/10/02/%E6%89%8B%E5%86%99Spring%E6%A1%86%E6%9E%B6Day2/index.html">
+<meta property="og:title" content="手写Spring框架Day3">
+<meta property="og:url" content="https://github.com/ylnxwlp/ylnxwlp.github.io/2025/10/03/%E6%89%8B%E5%86%99Spring%E6%A1%86%E6%9E%B6day3/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://github.com/images/redefine-og.webp">
-<meta property="article:published_time" content="2025-10-02T03:56:20.000Z">
-<meta property="article:modified_time" content="2025-10-02T17:13:19.747Z">
+<meta property="article:published_time" content="2025-10-03T04:44:57.000Z">
+<meta property="article:modified_time" content="2025-10-03T17:22:28.454Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="底层原理">
 <meta name="twitter:card" content="summary">
@@ -46,7 +46,7 @@
     
     <title>
         
-            手写Spring框架Day2 | 和ミカの秘密学習小屋
+            手写Spring框架Day3 | 和ミカの秘密学習小屋
         
     </title>
 
@@ -479,7 +479,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">手写Spring框架Day2</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">手写Spring框架Day3</h1>
 			</div>
 			
 		</div>
@@ -500,15 +500,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2025-10-02 11:56:20</span>
-        <span class="mobile">2025-10-02 11:56:20</span>
+        <span class="desktop">2025-10-03 12:44:57</span>
+        <span class="mobile">2025-10-03 12:44:57</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-10-03 01:13:19</span>
-            <span class="mobile">2025-10-03 01:13:19</span>
+            <span class="desktop">2025-10-04 01:22:28</span>
+            <span class="mobile">2025-10-04 01:22:28</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -546,12 +546,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.2k 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>3k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>9 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>10 分钟</span>
         </span>
     
     
@@ -570,72 +570,107 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>进入第二天了，今天要学的东西就比较深入一些了。</p>
-<h3 id="第一部分-依赖注入"><a href="#第一部分-依赖注入" class="headerlink" title="第一部分 依赖注入"></a>第一部分 依赖注入</h3><p>在昨天我们已经实现了bean的创建和管理。既然创建了bean，那就需要使用，也就是当一个bean要使用到别的bean，就得把这个bean给他放入需要bean的类中吧。</p>
-<p>怎么实现呢？首先肯定想到怎么标识需要注入的地方，用过Spring的都知道有一个@Autowired注解。那我们就把他创建出来。</p>
-<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(ElementType.FIELD)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Autowired &#123;</span><br><span class="line">    String <span class="title function_">value</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>我们再创建一个新的OrderService，把他也注册成bean。然后，在原先的UserService中去注入这个OrderService的bean。</p>
-<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OrderService</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> OrderService orderService;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span>  <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(orderService);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>好了，现在标识已经做好了。那不能只有表面功夫吧，加个注解就完事；肯定要为他去实现一个依赖注入的功能。要在哪里实现呢？</p>
-<p>想想昨天写过的东西，构造函数？似乎只是用来扫描和把创建出来的bean加入单例池；getBean？更不对了，只是用来获取bean的，都不知道要注入到哪里……</p>
-<p>对了！createBean可太适合不过了！在昨天的代码里，这里面可是把每一个bean进行实例化的地方，那实例化之后，跟着把里面的内容一起给他放进去，不是妙哉？</p>
-<p>所以，我们先获取实例化的实例所有内部字段，再一个个遍历判断是否有加上注解，如果加上了@Autowired，那就进行注入就好了。</p>
-<p>那怎么注入呢？首先需要拿到注入的bean实例，getBean方法就有用了，把字段的名字传给getBean，这样就拿到了需要注入的一个实例，我们写好的getBean会帮我们解决单多例的问题。<br>然后就可以通过反射把这个bean注入了。</p>
-<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Object <span class="title function_">createBean</span><span class="params">(String beanName, BeanDefinition beanDefinition)</span> &#123;</span><br><span class="line">    <span class="type">Class</span> <span class="variable">clazz</span> <span class="operator">=</span> beanDefinition.getType();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">Object</span> <span class="variable">instance</span> <span class="operator">=</span> clazz.getConstructor().newInstance();</span><br><span class="line">        <span class="comment">//依赖注入</span></span><br><span class="line">        <span class="keyword">for</span> (Field field : clazz.getDeclaredFields()) &#123;</span><br><span class="line">            <span class="keyword">if</span>(field.isAnnotationPresent(Autowired.class))&#123;</span><br><span class="line">                <span class="comment">//允许修改</span></span><br><span class="line">                field.setAccessible(<span class="literal">true</span>);</span><br><span class="line">                <span class="comment">//将这个bean实例注入需要注入的实例里</span></span><br><span class="line">                field.set(instance,getBean(field.getName()));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NoSuchMethodException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>这样我们就实现bean的DI了！用测试方法看看bean的打印情况：</p>
-<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">SwissApplicationContext</span> <span class="variable">swissApplicationContext</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SwissApplicationContext</span>(AppConfig.class);</span><br><span class="line"></span><br><span class="line">        <span class="type">UserService</span> <span class="variable">userService</span> <span class="operator">=</span> (UserService) swissApplicationContext.getBean(<span class="string">&quot;userService&quot;</span>);</span><br><span class="line">        userService.test();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">com.swiss.service.OrderService@6f94fa3e</span><br></pre></td></tr></table></figure></div>
-<p>依赖注入就实现了。</p>
-<h3 id="第二部分-Aware回调"><a href="#第二部分-Aware回调" class="headerlink" title="第二部分 Aware回调"></a>第二部分 Aware回调</h3><p>在有的时候，我们在bean实例化和依赖注入后，想要得到一些注册出的bean内容，比如我并不知道bean名字在Spring容器中的默认命名规则，但我想要知道当前这个bean在IOC中以什么名字存储，这个时候就需要一个回调，我们可以根据这个回调，拿到bean的一些有关信息，这就是Aware回调。</p>
-<p>这里我们模拟一个bean名字获取的回调，创建回调接口：</p>
-<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">BeanNameAware</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">setBeanName</span><span class="params">(String beanName)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>然后我们就可以去实现这个接口，得到beanName。注意，这个回调函数是在Spring中自动被调用的，也就是Spring会自动把bean名字传进来。</p>
-<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> <span class="keyword">implements</span> <span class="title class_">BeanNameAware</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> OrderService orderService;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String beanName;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setBeanName</span><span class="params">(String beanName)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.beanName = beanName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(orderService);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>这样我们通过beanName的Aware回调，拿到了想要的bean的名字。</p>
-<p>当然实际上还有好多回调：BeanClassLoaderAware，BeanFactoryAware，ApplicationContextAware……但是都和这个原理相同。</p>
-<h3 id="第三部分-初始化回调"><a href="#第三部分-初始化回调" class="headerlink" title="第三部分 初始化回调"></a>第三部分 初始化回调</h3><p>在bean处理好了之后，我们想要对其进行一些预先的操作，比如给一些东西赋值啊之类的，这个时候就是属于初始化的内容了。</p>
-<p>Spring为初始化回调提供了一个接口，和上面的Aware一样，我们需要自己去实现，然后进行自己想要的操作。注意，这里面你想做什么，Spring都不会管，也不会传来任何参数，完全是你自己的逻辑。</p>
-<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">InitializingBean</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">afterPropertiesSet</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> <span class="keyword">implements</span> <span class="title class_">BeanNameAware</span>, InitializingBean &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> OrderService orderService;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String beanName;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String INeed;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setBeanName</span><span class="params">(String beanName)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.beanName = beanName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">afterPropertiesSet</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//很多很多想要在初始化执行的都可以写在这里</span></span><br><span class="line">        <span class="built_in">this</span>.INeed =  <span class="string">&quot;Mika&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span>  <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(orderService);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>比如在这里，我为我的一个成员变量赋了一个值，我还可以输出，存储……干什么都可以。这就是初始化的回调作用。</p>
-<h3 id="第四部分-BeanPostProcessor-Bean的后置处理器"><a href="#第四部分-BeanPostProcessor-Bean的后置处理器" class="headerlink" title="第四部分 BeanPostProcessor Bean的后置处理器"></a>第四部分 BeanPostProcessor Bean的后置处理器</h3><p>为了更好、更灵活的管理bean对象，Spring还在初始化的前后提供了处理的方法。BeanPostProcessor接口就是用来让插入在初始化前后的一些想要执行的逻辑。</p>
-<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">BeanPostProcessor</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">postProcessBeforeInitialization</span><span class="params">(String beanName, Object bean)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">postProcessAfterInitialization</span><span class="params">(String beanName, Object bean)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>这两个方法分别在初始化前、后调用。</p>
-<p>我们可以试着实现以下这两个方法：</p>
-<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SwissBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title class_">BeanPostProcessor</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postProcessBeforeInitialization</span><span class="params">(String beanName, Object bean)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(beanName.equals(<span class="string">&quot;userService&quot;</span>))&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;1111&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postProcessAfterInitialization</span><span class="params">(String beanName, Object bean)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(beanName.equals(<span class="string">&quot;userService&quot;</span>))&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;2222&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>我们实现的逻辑是：bean的名字是userService的时候，在初始化前打印一个1111，在初始化后打印一个2222。</p>
-<p>这些调用在我们写好逻辑后，Spring会帮我们自动在初始化前后调用。那Spring是怎么知道有哪些后置处理器的？</p>
-<p>这个需要在Spring里面进行处理。在注册完所有BeanDefinition后，专门处理BeanPostProcessor的创建，使其被初始化成一个成熟的bean，然后加入List进行管理。</p>
-<p>在处理其他正常bean的时候，遇到BeanPostProcessor子类就跳过即可。</p>
+			<p>第三天就不写了，来细致的了解一些前两天没有写到的一些细节。</p>
+<p>现在我们可以知道，一个Bean创建的生命周期如下：</p>
 
-  <div class="note-large grey">
+  <div class="note-large blue">
     <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>提示！</p>
+      <p>生命周期</p>
 
     </div>
     <div class="notel-content">
-      <p>但是！这里为了简单方便，我们在构造函数里面扫描的时候就直接创建BeanPostProcessor实例！实际上不应该是这样,会导致这样创建出来的实例没有被DI，是个残缺的bean，所以下面这一段代码仅供参考。</p>
+      <p>UserService.class –&gt; 推断构造函数 –&gt; 对象（实例化） –&gt; 依赖注入 –&gt; 初始化前 –&gt; 初始化 –&gt; 初始化后（AOP） –&gt; 代理对象 –&gt; 放入Map单例池 –&gt; Bean对象</p>
 
     </div>
   </div>
-<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (clazz.isAnnotationPresent(Component.class)) &#123;</span><br><span class="line">    <span class="comment">//说明这是一个bean，开始创建beanDefinition对象</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//先把BeanPostProcessor的实现子类存起来</span></span><br><span class="line">    <span class="keyword">if</span> (BeanPostProcessor.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">    <span class="type">BeanPostProcessor</span> <span class="variable">instance</span> <span class="operator">=</span> (BeanPostProcessor) clazz.newInstance();</span><br><span class="line">    beanPostProcessorList.add(instance);</span><br><span class="line">&#125;</span><br><span class="line">……</span><br></pre></td></tr></table></figure></div>
-<p>然后，在初始化前后，遍历bean后置处理器的List，执行定义的方法即可。</p>
-<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (BeanPostProcessor beanPostProcessor : beanPostProcessorList) &#123;</span><br><span class="line">    instance = beanPostProcessor.postProcessBeforeInitialization(beanName,instance);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化</span></span><br><span class="line"><span class="keyword">if</span> (instance <span class="keyword">instanceof</span> InitializingBean) &#123;</span><br><span class="line">    ((InitializingBean) instance).afterPropertiesSet();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (BeanPostProcessor beanPostProcessor : beanPostProcessorList) &#123;</span><br><span class="line">    instance = beanPostProcessor.postProcessAfterInitialization(beanName,instance);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>我们试着运行一下：</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1111</span><br><span class="line">Mika（afterPropertiesSet，初始化方法打印）</span><br><span class="line">2222</span><br></pre></td></tr></table></figure></div>
-<p>确实是在初始化的前后插入了逻辑。</p>
-<p>这就是bean的后置处理器BeanPostProcessor。在Spring里面实现了很多BeanPostProcessor，如下面的AOP。当然我们也可以自己实现BeanPostProcessor，执行想要的逻辑。</p>
-<h3 id="第五部分-AOP"><a href="#第五部分-AOP" class="headerlink" title="第五部分 AOP"></a>第五部分 AOP</h3><p>在上一个部分中，讲到了Bean的后置处理器，可以在Bean被初始化的前后执行一些逻辑。</p>
-<p>但我们知道，我们有时候可能对于某个bean需要增强，如AOP的切面。这个时候，我们就需要代理对象来实现增强的内容，而不是原生的bean实例。</p>
-<p>在Spring中，有一个AnnotationAwareAspectJAutoProxyCreator，会解析@Aspect里面的内容，根据匹配的切点表达式得到是哪个bean，然后进行动态代理创建，构造一个拦截器链，按顺序执行前置通知、目标方法、后置通知等等。<br>但我们这里同样是一个模拟，简单的处理。</p>
-<p>首先我们需要把上一部分的postProcessBeforeInitialization和postProcessAfterInitialization返回值改为Object。因为需要返回一个代理对象了。</p>
-<p>然后在postProcessAfterInitialization里面，也就是初始化完成后，我们将进行动态代理的创建。这里为userService增强，创建一个JDK动态代理，首先需要创建一个interface（JDK只支持接口代理）：</p>
-<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserInterface</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>然后我们让UserService去实现这个接口，就可以为UserService创建动态代理了。</p>
-<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> Object <span class="title function_">postProcessAfterInitialization</span><span class="params">(String beanName, Object bean)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (beanName.equals(<span class="string">&quot;userService&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> Proxy.newProxyInstance(SwissApplicationContext.class.getClassLoader(), bean.getClass().getInterfaces(), <span class="keyword">new</span> <span class="title class_">InvocationHandler</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> Object <span class="title function_">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;切面逻辑&quot;</span>);</span><br><span class="line">                <span class="keyword">return</span> method.invoke(bean, args);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bean;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>可以看到，这里userService的bean已经将变成代理对象返回。那我们尝试使用getBean得到的bean去进行原先的test方法：</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">切面逻辑</span><br><span class="line">com.swiss.service.OrderService@355da254</span><br></pre></td></tr></table></figure></div>
-<p>成功了！增强逻辑被实现了，也就是我们的AOP动态代理增强实现了。</p>
-<p>第二天的学习内容结束了！</p>
+<p>有一些部分我们在简单手写模拟的时候没有仔细的进行探究，比如：</p>
+<h3 id="推断构造函数"><a href="#推断构造函数" class="headerlink" title="推断构造函数"></a>推断构造函数</h3><p>使用过Spring，我们都知道，依赖注入不仅可以通过@Autowired等注解声明，还有构造函数注入。实际上，Spring更为推荐构造函数注入方式，我们经常看见@Autowired注解上会有淡淡的黄线提示推荐使用构造函数注入。<br>那一个类里面的构造函数可能很多，Spring又是怎么知道该使用哪个构造函数呢？<br><strong>首先，在只有一个构造函数的前提下，肯定就直接使用那个构造函数。</strong><br>其次，如果构造函数<strong>超出一个</strong>，就要开始条件判断：</p>
+<h4 id="是否有-Autowired注解声明的构造函数"><a href="#是否有-Autowired注解声明的构造函数" class="headerlink" title="是否有@Autowired注解声明的构造函数"></a>是否有@Autowired注解声明的构造函数</h4><p>如果有，还要判断有几个构造函数被加上了@Autowired。<br><strong>如果只有一个，就用那个。超出一个，报错，因为Spring不知道要用哪个。</strong><br>如果没有，进入下一个判断。</p>
+<h4 id="是否有无参构造函数"><a href="#是否有无参构造函数" class="headerlink" title="是否有无参构造函数"></a>是否有无参构造函数</h4><p><strong>如果有，直接调用无参构造。</strong><br><strong>如果没有，也报错，因为Spring仍然不知道要用哪个构造函数。</strong><br>依据这样的规则，这样Spring就可以得到想要的唯一构造函数，然后调用。</p>
+<h3 id="找到构造函数bean"><a href="#找到构造函数bean" class="headerlink" title="找到构造函数bean"></a>找到构造函数bean</h3><p>知道了要用哪个构造函数，那怎么去找到合适的bean注入到这个构造函数呢？</p>
+<p>首先有个概念需要理解：单例bean中的<strong>单例</strong>不是对于这个类来说的，而是对于这个bean<strong>名字</strong>来说的。即，即使类型一样，也可以存在多个bean；但是一个bean名字只有一个bean对象。</p>
+<p>我们可以通过一个代码来理解一下：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//APPConfig</span></span><br><span class="line"><span class="meta">@bean</span></span><br><span class="line"><span class="keyword">public</span> UserService <span class="title function_">userService1</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">UserService</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@bean</span></span><br><span class="line"><span class="keyword">public</span> UserService <span class="title function_">userService2</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">UserService</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>好了，这下类型居然有了三个bean，只是bean的名字不一样而已。</p>
+<p>那是不是根据bean名字去找就行了？</p>
+<p>看看这个例子：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">UserService</span><span class="params">(OrderService service)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.OrderService = service;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>这里的bean名字，不是固定的。程序员完全可以乱命名，这样就会拿到一个一个乱七八糟的bean，根本注入不进去。</p>
+<p>所以，这里想要找到构造函数里面的bean，既不能只根据类型，也不能只根据bean名字。应该<strong>先根据类型找到所有bean，再根据bean名字确定具体bean实例。</strong></p>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>注意</p>
+
+    </div>
+    <div class="notel-content">
+      <p>如果类型只有一个bean实例，那就直接用就好了。</p>
+
+    </div>
+  </div>
+<p>如果这样的方法无法确定，就只能报错了，说明程序员根本不想让Spring找到这个bean……</p>
+<p>那现在就有个疑问了，那这不是执行了DI依赖注入吗？那不是破坏了原本的生命周期顺序了吗？</p>
+<p>其实不是的，这里只是因为要实例化不得已必须将需要的依赖注入，其他暂时没有使用的依赖，即使标注了@Autowired，也是不会注入的，会等到后续的DI注入环节完成注入。</p>
+<p>现在我们可以分析一下为什么Spring强烈推荐构造函数注入了。</p>
+<p>1、在实例化完成后，这个bean就已经是一个完整可用的bean了。</p>
+<p>2、构造函数注入天然支持final字段。</p>
+<p>3、避免NullPointerException，构造函数注入的依赖缺失会在应用启动时立即报错，而不是等到运行时才抛出NullPointerException。</p>
+<p>一点小八股：你知道@Autowired和@Resource查找bean的顺序是怎么样的吗？</p>
+<h3 id="PostConstruct"><a href="#PostConstruct" class="headerlink" title="@PostConstruct"></a>@PostConstruct</h3><p>这个注解修饰的方法执行是在DI注入，Aware回调后，初始化前，也就是有一个bean的后置处理器进行执行。</p>
+<p>Spring会查找这个类class对象的每一个方法上面是否有@PostConstruct这个注解，如果有，直接invoke即可。</p>
+<h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h3><p>讲到这里，我们应该都知道AOP是在什么时候创建出来的吧，即初始化之后通过后置处理器弄出一个代理对象，加入单例池里面。那我们可以考虑一个情况：</p>
+<p>如果一个bean被代理了，里面的所有注入的bean还会有值吗？</p>
+<p>我们第一直觉肯定是有的吧，不然怎么使用依赖的bean方法。但是实际上，在代理对象产生后，所有bean都变成了null。根据bean的生命周期我们可以看出来，在AOP动态代理创建了之后，不会再有一个DI环节，所有依赖的bean都是null。</p>
+<p>那不是出问题了吗？那我们调用这个被代理的bean去打印一下里面依赖的bean，真的会是null吗？</p>
+<p>实际上又是有值的。那不是矛盾了么？到底是有还是没有？</p>
+<p>还真没有。那为什么打印的时候又有值？</p>
+<p>我们以CGLIB代理为例。我们知道它可以通过<strong>继承</strong>的方式去为我们生成非接口的动态代理。假如父类UserService里面有一个test方法，打印了依赖的bean OrderService，，这个代理对象就会这样：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class 某某Proxy <span class="keyword">extends</span> <span class="title class_">UserService</span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">        执行我们定义的切面逻辑……</span><br><span class="line">        调用原生的test方法……</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>看到调用原生的test方法，我们第一反应就是super.test()。但问题是，你依然没有对这个OrderService去进行依赖注入，调用父类的test方法仍然是null。所以肯定要调用有注入对象的对象方法。</p>
+<p>哪里有注入好的对象？从始至终就只有一个吧，那就是Spring在AOP创建前的那个对象。那代理对象又是怎么调用的呢？</p>
+<p>保存这个对象就好了。代理对象里面有一个字段target，表明被代理的对象是哪个，也就是 Private UserService target。</p>
+<p>这下我们就知道了：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class 某某Proxy <span class="keyword">extends</span> <span class="title class_">UserService</span>&#123;</span><br><span class="line">    </span><br><span class="line">    Private UserService target;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">        执行我们定义的切面逻辑……</span><br><span class="line">        target.test();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>这样就可以正常工作了。</p>
+<h3 id="Spring事务"><a href="#Spring事务" class="headerlink" title="Spring事务"></a>Spring事务</h3><p>事务其实也是一个代理对象。Spring会为开启了事务的类生成代理，然后执行类似于AOP的逻辑，在执行的前后插入事务控制逻辑。</p>
+<p>那怎么控制整体的事务呢？Spring让一个方法下的所有数据库操作都处于一个事务中，并用try-catch去判断是否要回滚。</p>
+<p>为了让一个方法下的所有操作都处于一个事务，肯定要把事务自动提交关闭，但是如果是JDBC原生连接，这个是默认开启的。所以Spring统一管理了一个jdbcTemplate bean，并且连接在创建的时候把自动提交关闭了。</p>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>注意</p>
+
+    </div>
+    <div class="notel-content">
+      <p>如果你自己建立了一个jdbc连接，即使加上@Transactional，事务仍然失效。</p>
+
+    </div>
+  </div>
+<p>事务执行流程：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">开启事务 --&gt; 事务管理器新建一个数据库连接connection，并关闭自动提交 --&gt; 业务SQL（jdbc bean需要拿到数据库连接） --&gt; 判断是否提交/回滚 </span><br></pre></td></tr></table></figure></div>
+
+<h3 id="为什么内部调用导致事务传播失效？"><a href="#为什么内部调用导致事务传播失效？" class="headerlink" title="为什么内部调用导致事务传播失效？"></a>为什么内部调用导致事务传播失效？</h3><p>这个时候我们就可以来讨论一下为什么内部调用会导致SPring事务失效了。</p>
+<p>我们可以看一下这个：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Transactional</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">a</span><span class="params">()</span>&#123;</span><br><span class="line">    业务SQL；</span><br><span class="line">    b();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Transactional(propagation = Propagation.NEVER)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">b</span><span class="params">()</span>&#123;</span><br><span class="line">    业务SQL；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>我们配置了b这个方法当外部有事务存在时候，就抛异常。但是这个代码运行起来真的会抛异常吗？</p>
+<p>当然不会。因为已经Spring事务在b已经失效了。@Transactional(propagation &#x3D; Propagation.NEVER)相当于没有写。</p>
+<p>为什么呢？我们想想上面的AOP原理：当执行业务方法的时候，我们调用的是target里面的原生方法。那么在原生方法里面，调用b方法可以看作：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.b();</span><br></pre></td></tr></table></figure></div>
+<p>this是什么？是没有被代理的对象target吧？那对于必须要代理增强的事务来说，这个b没有被代理处理，自然b的事务就没有用了，也就相当于白写。</p>
+<p>那怎么破局？自然就是要让代理去执行吧。我们不能让this去做，那我们就去得到一个proxy。从单例池里面直接注入当前target的代理对象，用这个注入的代理对象再去调用b就行了，实际上就是套娃。</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">userService</span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService; </span><br><span class="line"></span><br><span class="line">    <span class="meta">@Transactional</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">a</span><span class="params">()</span>&#123;</span><br><span class="line">        业务SQL；</span><br><span class="line">        userService.b();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Transactional(propagation = Propagation.NEVER)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">b</span><span class="params">()</span>&#123;</span><br><span class="line">        业务SQL；</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>这样就可以在代理的target里面再套一个代理，就能使用了，这个时候运行就会抛出异常。</p>
+<h3 id="Configuration是怎么影响Spring事务的？"><a href="#Configuration是怎么影响Spring事务的？" class="headerlink" title="@Configuration是怎么影响Spring事务的？"></a>@Configuration是怎么影响Spring事务的？</h3><p>在讲这个注解之前，回到最初的Spring事务准备流程。在正常使用事务功能前，是需要进行配置的。我们需要用bean声明连接，jdbc，数据源。其中，<strong>jdbc声明需要调用一次声明datasource bean的方法，连接声明也需要调用一次声明datasource bean的方法。</strong></p>
+<p>配置好了之后，如果在配置类APPconfig里面，不加上@Configuration，我们试着去执行一下事务的方法，发现事务直接就不能用了，而且不是像上面一样传播的时候才失效，而是从一开始就直接坏了。</p>
+<p>为什么呢？在分析原理之前，我们要先知道一下Spring是通过什么去管理连接的。因为jdbc这个类对于每一个数据都是一样的，不一样的是不同数据的connection，jdbc只要拿到提前设置好的connection，就可以对每一个不同的数据库进行操作。</p>
+<p>又由于在处理一个方法的时候肯定是单线程执行的，所以这里Spring存储管理用的是<strong>ThreadLocal</strong>，里面的类型为Map&lt;DataSource, Connection&gt;。这样jdbc在每一条线程执行的时候，根据需要拿到不同数据库的连接了。</p>
+<p>那现在回到最初的bean声明环节。我们发现jdbc bean声明要调用一次DataSource bean声明方法，Connection bean声明也要调用一次DataSource bean声明方法。这样就会导致一个很大的问题：DataSource return了两个new的对象。换句话说，jdbc得到的DataSource对象和Connection得到的DataSource对象不一样，这个时候，当jdbc从ThreadLocal里面拿Connection，就会拿不到，那没办法了，Spring只得重新建立一个jdbc和connection去执行sql，<strong>但是此时，自动提交就是开启了的</strong>。事务当然也就失效了。</p>
+<p>要解决这个方法，加上@Configuration就行了。根据这个原理分析，我们很容易推断出@Configuration的解决方案是什么，也就是把jdbc和connection里面的DataSource进行一个统一，那他是怎么做的呢？</p>
+<p>同样基于<strong>动态代理</strong>。动态代理继承类，并重写声明连接，jdbc，数据源的bean方法。<strong>注意这里的重写方法里面调用的是super，而不是target</strong>。</p>
+<p>声明连接，jdbc没什么好做手脚的，问题主要出在数据源的bean声明。为了不让数据源bean声明两次，动态代理会在调用数据源的bean声明方法时候，<strong>先去单例池里面找有没有需要的DataSource的bean</strong>。如果有，就直接返回单例池里面的，<strong>只有没有才会进行创建</strong>。</p>
+<p>所以，@Configuration依照动态代理的方式，解决了这个问题。</p>
+<p>循环依赖问题见单独文章：<a class="link"   target="_blank" rel="noopener" href="https://www.swissroll.today/2025/10/04/%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E2%80%94%E2%80%94%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E7%BA%A7%E7%BC%93%E5%AD%98%EF%BC%9F/" >循环依赖 —— 为什么是三级缓存？<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>第三天的学习到这里也就结束了。</p>
 
 		</div>
 
@@ -643,18 +678,18 @@
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
 			<div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> 手写Spring框架Day2</li>
+        <li><strong>标题:</strong> 手写Spring框架Day3</li>
         <li><strong>作者:</strong> ylnxwlp</li>
         <li><strong>创建于
-                :</strong> 2025-10-02 11:56:20</li>
+                :</strong> 2025-10-03 12:44:57</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-10-03 01:13:19
+                    :</strong> 2025-10-04 01:22:28
             </li>
         
         <li>
-            <strong>链接:</strong> https://www.swissroll.today/2025/10/02/手写Spring框架Day2/
+            <strong>链接:</strong> https://www.swissroll.today/2025/10/03/手写Spring框架day3/
         </li>
         <li>
             <strong>
@@ -688,12 +723,12 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2025/10/03/%E6%89%8B%E5%86%99Spring%E6%A1%86%E6%9E%B6day3/">
+				<a class="prev" rel="prev" href="/2025/10/04/%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E2%80%94%E2%80%94%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E7%BA%A7%E7%BC%93%E5%AD%98%EF%BC%9F/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">手写Spring框架Day3</span>
+						<span class="post-nav-title-item">循环依赖——为什么是三级缓存？</span>
 						<span class="post-nav-item">上一篇</span>
 					</span>
 				</a>
@@ -701,9 +736,9 @@
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2025/10/01/%E6%89%8B%E5%86%99Spring%E6%A1%86%E6%9E%B6day1/">
+				<a class="next" rel="next" href="/2025/10/02/%E6%89%8B%E5%86%99Spring%E6%A1%86%E6%9E%B6Day2/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">手写Spring框架Day1</span>
+						<span class="post-nav-title-item">手写Spring框架Day2</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -767,8 +802,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
-		<div class="page-title">手写Spring框架Day2</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5"><span class="nav-text">第一部分 依赖注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-Aware%E5%9B%9E%E8%B0%83"><span class="nav-text">第二部分 Aware回调</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9B%9E%E8%B0%83"><span class="nav-text">第三部分 初始化回调</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-BeanPostProcessor-Bean%E7%9A%84%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8"><span class="nav-text">第四部分 BeanPostProcessor Bean的后置处理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86-AOP"><span class="nav-text">第五部分 AOP</span></a></li></ol>
+		<div class="page-title">手写Spring框架Day3</div>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E6%96%AD%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-text">推断构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0bean"><span class="nav-text">找到构造函数bean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PostConstruct"><span class="nav-text">@PostConstruct</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP"><span class="nav-text">AOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring%E4%BA%8B%E5%8A%A1"><span class="nav-text">Spring事务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%86%85%E9%83%A8%E8%B0%83%E7%94%A8%E5%AF%BC%E8%87%B4%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E5%A4%B1%E6%95%88%EF%BC%9F"><span class="nav-text">为什么内部调用导致事务传播失效？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configuration%E6%98%AF%E6%80%8E%E4%B9%88%E5%BD%B1%E5%93%8DSpring%E4%BA%8B%E5%8A%A1%E7%9A%84%EF%BC%9F"><span class="nav-text">@Configuration是怎么影响Spring事务的？</span></a></li></ol>
 
 	</div>
 </div>
