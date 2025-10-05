@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://github.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-10-04T12:45:13.000Z">
-<meta property="article:modified_time" content="2025-10-05T14:54:05.404Z">
+<meta property="article:modified_time" content="2025-10-05T15:58:49.656Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="底层原理">
 <meta name="twitter:card" content="summary">
@@ -507,8 +507,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-10-05 22:54:05</span>
-            <span class="mobile">2025-10-05 22:54:05</span>
+            <span class="desktop">2025-10-05 23:58:49</span>
+            <span class="mobile">2025-10-05 23:58:49</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -577,7 +577,7 @@
 <p>显然会报错吧，因为没有useMapper这个bean。因为@Autowired默认require是true的。</p>
 <p>那我们就得考虑一下把这个bean放入IOC容器里面。但是我们知道，Mapper层都是接口对吧，所以如果我们是Mybatis，应该要为其去创建动态代理对象，再把动态代理对象放入IOC。</p>
 <p>那什么东西能为一个接口来生成动态代理呢？我们想到factoryBean，虽然@Bean也可以注册，但是对于mapper层，肯定不止一个接口吧，一个个注册就有问题了，再说，mybatis作为一个框架，是不知道你业务代码里面的具体mapper有多少，有什么，所以采用factoryBean是一个再合适不过的方法。</p>
-<p>FactoryBean具体详解可见单独文章：<a class="link"   target="_blank" rel="noopener" href="https://www.swissroll.today/2025/10/04/FactoryBean%EF%BC%9FBeanFactory%EF%BC%9FSpring%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E5%8F%8C%E8%83%9E%E8%83%8E%E5%92%8C%E6%89%A9%E5%B1%95%E7%B1%BB/" >FactoryBean？BeanFactory？Spring中的那些双胞胎和扩展类<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>FactoryBean具体详解可见单独文章：<a class="link"   target="_blank" rel="noopener" href="https://www.swissroll.today/2025/10/04/FactoryBean%EF%BC%9FBeanFactory%EF%BC%9FSpring%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%86%85%E5%AE%B9/" >FactoryBean？BeanFactory？Spring中的那些有意思的内容<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 <p>那我们就建一个自己的SwissFactoryBean来继承FactoryBean吧。然后实现里面的getObject方法，为其生成一个动态代理返回就好了。然后再在下面的getObjectType里面声明一下userMapper.class，这样为UserMapper就注册了一个动态代理对象的bean。</p>
 <p>现在最开始的userMapper就能成功注入bean了。</p>
 <p>知道了这个，我们就可以尝试实现Mybatis和Spring的整合了。我们知道Mybatis里面有一个SqlSession，它可以为指定的接口生成动态代理。</p>
@@ -595,7 +595,7 @@
 <div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">AnnotationConfigApplicationContext</span> <span class="variable">applicationContext</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AnnotationConfigApplicationContext</span>();</span><br><span class="line">applicationContext.register(AppConfig.class);</span><br><span class="line"></span><br><span class="line"><span class="type">AbstractBeanDefinition</span> <span class="variable">beanDefinition</span> <span class="operator">=</span> BeanDefinitionBuilder.genericBeanDefinition().getBeanDefinition();</span><br><span class="line">beanDefinition.setBeanClass(SwissFactoryBean.class);</span><br><span class="line">beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(UserMapper.class);</span><br><span class="line"></span><br><span class="line">applicationContext.registerBeanDefinition(<span class="string">&quot;userMapper&quot;</span>, beanDefinition);</span><br><span class="line"></span><br><span class="line">applicationContext.refresh();</span><br></pre></td></tr></table></figure></div>
 <p>通过容器去注册UserMapper的beanDefinition。我们只需要重复写这样的代码，对于我们的SwissFactoryBean，就可以创建多个mapper的代理了。<strong>这里面每一个bean的名字都是不重复的，所以不用担心看似多例的情况</strong>（如果有疑惑，可以看<a class="link"   target="_blank" rel="noopener" href="https://www.swissroll.today/2025/10/03/%E6%89%8B%E5%86%99Spring%E6%A1%86%E6%9E%B6day3/" >手写Spring框架Day3<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>）。</p>
 <p>但是，这样看起来还是太乱了，有没有更优雅的方式呢？</p>
-<p>又一个扩展类来了：ImportBeanDefinitionRegistrar接口。至于这个接口具体是什么，和一些其他扩展类有什么关系，请看<a class="link"   target="_blank" rel="noopener" href="https://www.swissroll.today/2025/10/04/FactoryBean%EF%BC%9FBeanFactory%EF%BC%9FSpring%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E7%B1%BB/" >FactoryBean？BeanFactory？Spring中的那些有意思的类<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>。</p>
+<p>又一个扩展类来了：ImportBeanDefinitionRegistrar接口。至于这个接口具体是什么，和一些其他扩展类有什么关系，请看<a class="link"   target="_blank" rel="noopener" href="https://www.swissroll.today/2025/10/04/FactoryBean%EF%BC%9FBeanFactory%EF%BC%9FSpring%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%86%85%E5%AE%B9/" >FactoryBean？BeanFactory？Spring中的那些有意思的内容<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>。</p>
 <p>我们定义出自己的SwissImportBeanDefinitionRegistrar，实现ImportBeanDefinitionRegistrar接口及其方法：</p>
 <div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">registerBeanDefinitions</span><span class="params">(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry)</span>&#123;</span><br><span class="line">    <span class="type">AbstractBeanDefinition</span> <span class="variable">beanDefinition</span> <span class="operator">=</span> BeanDefinitionBuilder.genericBeanDefinition().getBeanDefinition();</span><br><span class="line">    beanDefinition.setBeanClass(SwissFactoryBean.class);</span><br><span class="line">    beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(UserMapper.class);</span><br><span class="line"></span><br><span class="line">    registry.registerBeanDefinition(<span class="string">&quot;userMapper&quot;</span>, beanDefinition);</span><br><span class="line"></span><br><span class="line">    <span class="type">AbstractBeanDefinition</span> <span class="variable">beanDefinition1</span> <span class="operator">=</span> BeanDefinitionBuilder.genericBeanDefinition().getBeanDefinition();</span><br><span class="line">    beanDefinition1.setBeanClass(SwissFactoryBean.class);</span><br><span class="line">    beanDefinition1.getConstructorArgumentValues().addGenericArgumentValue(OrderMapper.class);</span><br><span class="line"></span><br><span class="line">    registry.registerBeanDefinition(<span class="string">&quot;orderMapper&quot;</span>, beanDefinition1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>这样我们就可以在这里面优雅的定义出所有的mapper，接下来只要让Spring知道这个类：</p>
@@ -629,7 +629,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-10-05 22:54:05
+                    :</strong> 2025-10-05 23:58:49
             </li>
         
         <li>
@@ -667,12 +667,12 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2025/10/04/FactoryBean%EF%BC%9FBeanFactory%EF%BC%9FSpring%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E7%B1%BB/">
+				<a class="prev" rel="prev" href="/2025/10/04/FactoryBean%EF%BC%9FBeanFactory%EF%BC%9FSpring%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%86%85%E5%AE%B9/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">FactoryBean？BeanFactory？Spring中的那些有意思的类</span>
+						<span class="post-nav-title-item">FactoryBean？BeanFactory？Spring中的那些有意思的内容</span>
 						<span class="post-nav-item">上一篇</span>
 					</span>
 				</a>
@@ -780,7 +780,7 @@
                     </span>
                     
                         <span>
-                            共 13.8k 字
+                            共 13.9k 字
                         </span>
                     
                 </p>

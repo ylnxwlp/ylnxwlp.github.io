@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://github.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-10-03T04:44:57.000Z">
-<meta property="article:modified_time" content="2025-10-03T17:22:28.454Z">
+<meta property="article:modified_time" content="2025-10-05T15:39:52.270Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="底层原理">
 <meta name="twitter:card" content="summary">
@@ -507,8 +507,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-10-04 01:22:28</span>
-            <span class="mobile">2025-10-04 01:22:28</span>
+            <span class="desktop">2025-10-05 23:39:52</span>
+            <span class="mobile">2025-10-05 23:39:52</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -616,7 +616,7 @@
 <p>2、构造函数注入天然支持final字段。</p>
 <p>3、避免NullPointerException，构造函数注入的依赖缺失会在应用启动时立即报错，而不是等到运行时才抛出NullPointerException。</p>
 <p>一点小八股：你知道@Autowired和@Resource查找bean的顺序是怎么样的吗？</p>
-<h3 id="PostConstruct"><a href="#PostConstruct" class="headerlink" title="@PostConstruct"></a>@PostConstruct</h3><p>这个注解修饰的方法执行是在DI注入，Aware回调后，初始化前，也就是有一个bean的后置处理器进行执行。</p>
+<h3 id="PostConstruct"><a href="#PostConstruct" class="headerlink" title="@PostConstruct"></a>@PostConstruct</h3><p>这个注解修饰的方法执行是在DI注入，Aware回调后，初始化的时候，也就是有一个bean的后置处理器进行执行。</p>
 <p>Spring会查找这个类class对象的每一个方法上面是否有@PostConstruct这个注解，如果有，直接invoke即可。</p>
 <h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h3><p>讲到这里，我们应该都知道AOP是在什么时候创建出来的吧，即初始化之后通过后置处理器弄出一个代理对象，加入单例池里面。那我们可以考虑一个情况：</p>
 <p>如果一个bean被代理了，里面的所有注入的bean还会有值吗？</p>
@@ -685,7 +685,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-10-04 01:22:28
+                    :</strong> 2025-10-05 23:39:52
             </li>
         
         <li>
@@ -836,7 +836,7 @@
                     </span>
                     
                         <span>
-                            共 13.8k 字
+                            共 13.9k 字
                         </span>
                     
                 </p>
