@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://github.com/ylnxwlp/ylnxwlp.github.io/2025/06/17/sql窗口函数/"/>
+    <link rel="canonical" href="https://github.com/ylnxwlp/ylnxwlp.github.io/2025/10/04/手写spring框架day4/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -23,16 +23,16 @@
         
         <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SQL窗口函数的使用">
-<meta property="og:url" content="https://github.com/ylnxwlp/ylnxwlp.github.io/2025/06/17/SQL%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:title" content="手写Spring框架day4">
+<meta property="og:url" content="https://github.com/ylnxwlp/ylnxwlp.github.io/2025/10/04/%E6%89%8B%E5%86%99Spring%E6%A1%86%E6%9E%B6day4/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://github.com/images/redefine-og.webp">
-<meta property="article:published_time" content="2025-06-17T12:00:00.000Z">
-<meta property="article:modified_time" content="2025-09-10T14:32:15.749Z">
+<meta property="article:published_time" content="2025-10-04T12:45:13.000Z">
+<meta property="article:modified_time" content="2025-10-05T14:54:05.404Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="SQL编写">
+<meta property="article:tag" content="底层原理">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://github.com/images/redefine-og.webp">
     
@@ -46,7 +46,7 @@
     
     <title>
         
-            SQL窗口函数的使用 | 和ミカの秘密学習小屋
+            手写Spring框架day4 | 和ミカの秘密学習小屋
         
     </title>
 
@@ -479,7 +479,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">SQL窗口函数的使用</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">手写Spring框架day4</h1>
 			</div>
 			
 		</div>
@@ -500,15 +500,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2025-06-17 20:00</span>
-        <span class="mobile">2025-06-17 20:00</span>
+        <span class="desktop">2025-10-04 20:45:13</span>
+        <span class="mobile">2025-10-04 20:45:13</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-09-10 22:32:15</span>
-            <span class="mobile">2025-09-10 22:32:15</span>
+            <span class="desktop">2025-10-05 22:54:05</span>
+            <span class="mobile">2025-10-05 22:54:05</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -522,7 +522,7 @@
                     
                         
                         <li>
-                            <a href="/categories/SQL/">SQL</a>&nbsp;
+                            <a href="/categories/Spring/">Spring</a>&nbsp;
                         </li>
                     
                     
@@ -536,7 +536,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/SQL%E7%BC%96%E5%86%99/">SQL编写</a>&nbsp;
+                        <a href="/tags/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">底层原理</a>&nbsp;
                     </li>
                 
             </ul>
@@ -546,12 +546,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.2k 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>4 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>7 分钟</span>
         </span>
     
     
@@ -570,106 +570,51 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>这篇文章着重于理解数据库中使用窗口函数进行高级SQL语句的编写方法，并加以使用。</p>
-<h3 id="窗口函数相较于普通SQL，有什么不同？"><a href="#窗口函数相较于普通SQL，有什么不同？" class="headerlink" title="窗口函数相较于普通SQL，有什么不同？"></a>窗口函数相较于普通SQL，有什么不同？</h3><p>简单来说，窗口函数有以下功能：</p>
-<p>1、同时具有分组和排序的功能</p>
-<p>2、不减少原表的行数</p>
-
-  <div class="note-large grey">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-info"></i><p>运用场景举例</p>
-
-    </div>
-    <div class="notel-content">
-      <p>排名问题：每个部门按业绩来排名</p>
-<p>topN问题：找出每个部门排名前N的员工进行奖励</p>
-<p>复购分析：App内要分析复购用户有多少</p>
-<p>累计问题：医院要经常统计累计患者数</p>
-
-    </div>
-  </div>
-<p>这类<strong>在每组内排名</strong>场景使用普通SQL语句很复杂，不易实现，这个时候就需要窗口函数简化查询语句的编写。</p>
-<h3 id="窗口函数的基本使用"><a href="#窗口函数的基本使用" class="headerlink" title="窗口函数的基本使用"></a>窗口函数的基本使用</h3><p>窗口函数的基本语法如下：</p>
-<div class="code-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&lt;</span>窗口函数<span class="operator">&gt;</span> <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> <span class="operator">&lt;</span>用于分组的列名<span class="operator">&gt;</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="operator">&lt;</span>用于排序的列名<span class="operator">&gt;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>那么语法中的<strong>窗口函数</strong>都有哪些呢？</p>
-<p><strong>窗口函数</strong>的位置，可以放以下两种函数：</p>
-<p>1、<strong>专用窗口函数</strong>，包括rank, dense_rank, row_number等专用窗口函数。</p>
-<p>2、<strong>聚合函数</strong>，如sum. avg, count, max, min等。</p>
-<p>因为窗口函数是对where或者group by子句处理后的结果进行操作，所以窗口函数原则上只能写在select子句中。</p>
-<h4 id="专用窗口函数rank"><a href="#专用窗口函数rank" class="headerlink" title="专用窗口函数rank"></a>专用窗口函数rank</h4><p>以一个班级表举例：<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://pic4.zhimg.com/v2-f8c3b3deb99122d75bb506fdbea81c8d_1440w.webp?consumer=ZHI_MENG"
-                      alt="班级表" title="班级表"
-                ></p>
-<p>想在每个班级内按成绩排名，得到下面的结果。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://pic3.zhimg.com/v2-3285d1d648de9f90864000d58847087a_1440w.webp?consumer=ZHI_MENG"
-                      alt="班级表" title="班级表"
-                ></p>
-<p><strong>得到上面结果的sql语句代码如下:</strong></p>
-<div class="code-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span>,</span><br><span class="line">   <span class="built_in">rank</span>() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> 班级</span><br><span class="line">                 <span class="keyword">order</span> <span class="keyword">by</span> 成绩 <span class="keyword">desc</span>) <span class="keyword">as</span> ranking</span><br><span class="line"><span class="keyword">from</span> 班级表</span><br></pre></td></tr></table></figure></div>
-<p><strong>partition by用来对表分组,order by子句的功能是对分组后的结果进行排序。</strong></p>
-<p>窗口函数具备了group by子句分组的功能和order by子句排序的功能。那么为什么还要用窗口函数呢？</p>
-<p>因为，group by分组汇总后改变了表的行数，一行只有一个类别。而partiition by和rank函数不会减少原表中的行数。</p>
-<h4 id="其他专用窗口函数"><a href="#其他专用窗口函数" class="headerlink" title="其他专用窗口函数"></a>其他专用窗口函数</h4><p>rank, dense_rank, row_number有什么区别呢？<br>举个例子：</p>
-<div class="code-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span>,</span><br><span class="line">   <span class="built_in">rank</span>() <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> 成绩 <span class="keyword">desc</span>) <span class="keyword">as</span> ranking,</span><br><span class="line">   <span class="built_in">dense_rank</span>() <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> 成绩 <span class="keyword">desc</span>) <span class="keyword">as</span> dese_rank,</span><br><span class="line">   <span class="built_in">row_number</span>() <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> 成绩 <span class="keyword">desc</span>) <span class="keyword">as</span> row_num</span><br><span class="line"><span class="keyword">from</span> 班级表</span><br></pre></td></tr></table></figure></div>
-<p>上述代码得到结果如图：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://picx.zhimg.com/v2-ad1d86f5a5b9f0ef684907b20b341099_1440w.webp?consumer=ZHI_MENG"
-                      alt="运行结果" title="运行结果"
-                ></p>
-<p>从上面的结果可以看出：</p>
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-info"></i><p>专用函数区别</p>
-
-    </div>
-    <div class="notel-content">
-      <p>rank函数：这个例子中是5位，5位，5位，8位，也就是如果有并列名次的行，会占用下一名次的位置。比如正常排名是1，2，3，4，但是现在前3名是并列的名次，结果是：1，1，1，4。</p>
-<p>dense_rank函数：这个例子中是5位，5位，5位，6位，也就是如果有并列名次的行，不占用下一名次的位置。比如正常排名是1，2，3，4，但是现在前3名是并列的名次，结果是：1，1，1，2。</p>
-<p>row_number函数：这个例子中是5位，6位，7位，8位，也就是不考虑并列名次的情况。比如前3名是并列的名次，排名是正常的1，2，3，4。</p>
-
-    </div>
-  </div>
-
-<p>可以用一张图解释：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://pica.zhimg.com/v2-7b63c571dfa285c0aa0c8f944ca89482_1440w.webp?consumer=ZHI_MENG"
-                      alt="运行结果" title="运行结果"
-                ></p>
-<h4 id="聚合函数作为窗口函数"><a href="#聚合函数作为窗口函数" class="headerlink" title="聚合函数作为窗口函数"></a>聚合函数作为窗口函数</h4><div class="code-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span>,</span><br><span class="line">   <span class="built_in">sum</span>(成绩) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> 学号) <span class="keyword">as</span> current_sum,</span><br><span class="line">   <span class="built_in">avg</span>(成绩) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> 学号) <span class="keyword">as</span> current_avg,</span><br><span class="line">   <span class="built_in">count</span>(成绩) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> 学号) <span class="keyword">as</span> current_count,</span><br><span class="line">   <span class="built_in">max</span>(成绩) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> 学号) <span class="keyword">as</span> current_max,</span><br><span class="line">   <span class="built_in">min</span>(成绩) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> 学号) <span class="keyword">as</span> current_min</span><br><span class="line"><span class="keyword">from</span> 班级表</span><br></pre></td></tr></table></figure></div>
-<p>看一下结果：<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://pic4.zhimg.com/v2-c48f0218306f65049fcf9f98c184226d_1440w.webp?consumer=ZHI_MENG"
-                      alt="运行结果" title="运行结果"
-                ></p>
-<p><strong>如上图，聚合函数sum在窗口函数中，是对自身记录、及位于自身记录以上的数据进行求和的结果。比如0004号，在使用sum窗口函数后的结果，是对0001，0002，0003，0004号的成绩求和，若是0005号，则结果是0001号~0005号成绩的求和，以此类推。</strong></p>
-<p><strong>不仅是sum求和，平均、计数、最大最小值，也是同理，都是针对自身记录、以及自身记录之上的所有数据进行计算。</strong></p>
-<p>这样使用窗口函数有什么用呢？聚合函数作为窗口函数，可以在每一行的数据里直观的看到，截止到本行数据，统计数据是多少（最大值、最小值等）。同时可以看出每一行数据，对整体统计数据的影响。</p>
-<p>注意：partition子句可是省略，省略就是不指定分组。但是，这就失去了窗口函数的功能，所以一般不这么使用。</p>
-<h3 id="一个练习具体例子"><a href="#一个练习具体例子" class="headerlink" title="一个练习具体例子"></a>一个练习具体例子</h3><p>1.获取每个部门中薪水最高的员工相关信息<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://pro11.oss-cn-hangzhou.aliyuncs.com/39c8a6097be44fe6e96ee9b6589f13c.png"
-                      alt="牛客SQL211 获取每个部门中薪水最高的员工相关信息" title="牛客SQL211 获取每个部门中薪水最高的员工相关信息"
-                ></p>
-<details class="[green]" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>参考答案 </summary>
-              <div class='content'>
-              <div class="code-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> mix <span class="keyword">AS</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> d.dept_no, d.emp_no, s.salary</span><br><span class="line">    <span class="keyword">FROM</span> dept_emp d</span><br><span class="line">    <span class="keyword">JOIN</span> salaries s <span class="keyword">ON</span> d.emp_no <span class="operator">=</span> s.emp_no</span><br><span class="line">),</span><br><span class="line">rank_table <span class="keyword">AS</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> <span class="operator">*</span>,</span><br><span class="line">           <span class="built_in">RANK</span>() <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> dept_no <span class="keyword">ORDER</span> <span class="keyword">BY</span> salary <span class="keyword">DESC</span>) <span class="keyword">AS</span> salary_rank</span><br><span class="line">    <span class="keyword">FROM</span> mix</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SELECT</span> dept_no, emp_no, salary</span><br><span class="line"><span class="keyword">FROM</span> rank_table</span><br><span class="line"><span class="keyword">WHERE</span> salary_rank <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure></div>
-              </div>
-            </details>
-
-<p>参考来源: <a class="link"   target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/zm/art/92654574?source_id=1005" >知乎：通俗易懂的学会SQL窗口函数<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+			<p>今天我们以Mybatis，一步步了解Spring和其他依赖的集成原理。</p>
+<p>在Spring中，集成Mybatis需要引入一个mybatis-spring的一个jar包。这个jar包会帮我们做好bean的注册等等。但我们今天就先不引入这个jar，只引入mybatis的原生依赖，我们试着自己实现两者的集成。</p>
+<p>现在代码如下：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">    System.out.println(userMapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>显然会报错吧，因为没有useMapper这个bean。因为@Autowired默认require是true的。</p>
+<p>那我们就得考虑一下把这个bean放入IOC容器里面。但是我们知道，Mapper层都是接口对吧，所以如果我们是Mybatis，应该要为其去创建动态代理对象，再把动态代理对象放入IOC。</p>
+<p>那什么东西能为一个接口来生成动态代理呢？我们想到factoryBean，虽然@Bean也可以注册，但是对于mapper层，肯定不止一个接口吧，一个个注册就有问题了，再说，mybatis作为一个框架，是不知道你业务代码里面的具体mapper有多少，有什么，所以采用factoryBean是一个再合适不过的方法。</p>
+<p>FactoryBean具体详解可见单独文章：<a class="link"   target="_blank" rel="noopener" href="https://www.swissroll.today/2025/10/04/FactoryBean%EF%BC%9FBeanFactory%EF%BC%9FSpring%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E5%8F%8C%E8%83%9E%E8%83%8E%E5%92%8C%E6%89%A9%E5%B1%95%E7%B1%BB/" >FactoryBean？BeanFactory？Spring中的那些双胞胎和扩展类<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>那我们就建一个自己的SwissFactoryBean来继承FactoryBean吧。然后实现里面的getObject方法，为其生成一个动态代理返回就好了。然后再在下面的getObjectType里面声明一下userMapper.class，这样为UserMapper就注册了一个动态代理对象的bean。</p>
+<p>现在最开始的userMapper就能成功注入bean了。</p>
+<p>知道了这个，我们就可以尝试实现Mybatis和Spring的整合了。我们知道Mybatis里面有一个SqlSession，它可以为指定的接口生成动态代理。</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> SqlSession sqlSession;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> Object <span class="title function_">getObject</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sqlSession.getMapper(UserMapper.class);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>那么，这个SqlSession要怎么注入呢？我们可以通过SqlSessionFactory去得到：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSqlSession</span><span class="params">(SqlSessionFactory sqlSessionFactory)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>SqlSessionFactory是可以通过我们的配置得到。我们可以通过xml文件配置内容，得到输入流；然后根据输入流创建出SqlSessionFactory，用@Bean交给Spring容器管理。</p>
+<p>那现在我们就可以用sqlSession来执行了吗，不，我们还得告诉MyBatis的全局配置里面有哪些mapper。</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSqlSession</span><span class="params">(SqlSessionFactory sqlSessionFactory)</span>&#123;</span><br><span class="line">    sqlSessionFactory.getConfiguration().addMapper(UserMapper.class);</span><br><span class="line">    <span class="built_in">this</span>.sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>现在我们就可以使用调用UserMapper层里面的方法，实现动态代理下的查询了。</p>
+<p>那又有新的问题了：我们目前的mapper类有哪些是写死的，如果的mapper有很多，总不能让使用者一个个去注册吧？并且每注册一个就得重新写一个类去实现FactoryBean，这种写死的方式肯定是不合理的。</p>
+<p>假设我们现在又有了一个OrderMapper，那我们就先开始尝试解耦合吧。先把SwissFactoryBean里面写死的地方提取出来，变成：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Class mapperClass;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">SwissFactoryBean</span><span class="params">(Class mapperClass)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.mapperClass = mapperClass;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSqlSession</span><span class="params">(SqlSessionFactory sqlSessionFactory)</span>&#123;</span><br><span class="line">    sqlSessionFactory.getConfiguration().addMapper(mapperClass);</span><br><span class="line">    <span class="built_in">this</span>.sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> Object <span class="title function_">getObject</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sqlSession.getMapper(mapperClass);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>现在我们就可以通过构造函数去传入具体的类，然后对其进行动态代理bean的创建了。这样的话，我们就可以做到这样：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">AnnotationConfigApplicationContext</span> <span class="variable">applicationContext</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AnnotationConfigApplicationContext</span>();</span><br><span class="line">applicationContext.register(AppConfig.class);</span><br><span class="line"></span><br><span class="line"><span class="type">AbstractBeanDefinition</span> <span class="variable">beanDefinition</span> <span class="operator">=</span> BeanDefinitionBuilder.genericBeanDefinition().getBeanDefinition();</span><br><span class="line">beanDefinition.setBeanClass(SwissFactoryBean.class);</span><br><span class="line">beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(UserMapper.class);</span><br><span class="line"></span><br><span class="line">applicationContext.registerBeanDefinition(<span class="string">&quot;userMapper&quot;</span>, beanDefinition);</span><br><span class="line"></span><br><span class="line">applicationContext.refresh();</span><br></pre></td></tr></table></figure></div>
+<p>通过容器去注册UserMapper的beanDefinition。我们只需要重复写这样的代码，对于我们的SwissFactoryBean，就可以创建多个mapper的代理了。<strong>这里面每一个bean的名字都是不重复的，所以不用担心看似多例的情况</strong>（如果有疑惑，可以看<a class="link"   target="_blank" rel="noopener" href="https://www.swissroll.today/2025/10/03/%E6%89%8B%E5%86%99Spring%E6%A1%86%E6%9E%B6day3/" >手写Spring框架Day3<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>）。</p>
+<p>但是，这样看起来还是太乱了，有没有更优雅的方式呢？</p>
+<p>又一个扩展类来了：ImportBeanDefinitionRegistrar接口。至于这个接口具体是什么，和一些其他扩展类有什么关系，请看<a class="link"   target="_blank" rel="noopener" href="https://www.swissroll.today/2025/10/04/FactoryBean%EF%BC%9FBeanFactory%EF%BC%9FSpring%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E7%B1%BB/" >FactoryBean？BeanFactory？Spring中的那些有意思的类<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>。</p>
+<p>我们定义出自己的SwissImportBeanDefinitionRegistrar，实现ImportBeanDefinitionRegistrar接口及其方法：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">registerBeanDefinitions</span><span class="params">(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry)</span>&#123;</span><br><span class="line">    <span class="type">AbstractBeanDefinition</span> <span class="variable">beanDefinition</span> <span class="operator">=</span> BeanDefinitionBuilder.genericBeanDefinition().getBeanDefinition();</span><br><span class="line">    beanDefinition.setBeanClass(SwissFactoryBean.class);</span><br><span class="line">    beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(UserMapper.class);</span><br><span class="line"></span><br><span class="line">    registry.registerBeanDefinition(<span class="string">&quot;userMapper&quot;</span>, beanDefinition);</span><br><span class="line"></span><br><span class="line">    <span class="type">AbstractBeanDefinition</span> <span class="variable">beanDefinition1</span> <span class="operator">=</span> BeanDefinitionBuilder.genericBeanDefinition().getBeanDefinition();</span><br><span class="line">    beanDefinition1.setBeanClass(SwissFactoryBean.class);</span><br><span class="line">    beanDefinition1.getConstructorArgumentValues().addGenericArgumentValue(OrderMapper.class);</span><br><span class="line"></span><br><span class="line">    registry.registerBeanDefinition(<span class="string">&quot;orderMapper&quot;</span>, beanDefinition1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>这样我们就可以在这里面优雅的定义出所有的mapper，接下来只要让Spring知道这个类：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ComponentScan(...)</span></span><br><span class="line"><span class="meta">@Import(SwissImportBeanDefinitionRegistrar.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">APPConfig</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>然后把原来main里面的模拟构造方法改回去，因为我们已经通过配置类引入了我们想要声明的mapper：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">AnnotationConfigApplicationContext</span> <span class="variable">applicationContext</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AnnotationConfigApplicationContext</span>(APPConfig.class);</span><br></pre></td></tr></table></figure></div>
+<p>通过@Import注解引入了这个ImportBeanDefinitionRegistrar，这样Spring就会知道我们的自定义的SwissImportBeanDefinitionRegistrar，帮我们通过我们定义的SwissFactoryBean去实现每一个mapper的动态代理了。</p>
+<p>Ok，到这里，耦合就解开了，只要我们想，就可以方便的编码声明哪些mapper。</p>
+<p>接下来就是解决动态寻找mapper的问题了。我们会发现现在我们mapper有哪些仍然是写死的，只是解耦合，搭建好了方便的用一个FactoryBean去构造每个mapper动态代理的架构。那我们怎么实现动态的去识别有哪些mapper，然后自动的生成动态代理呢？</p>
+<p>很明显就是扫描吧。我们可以定义一个注解@SwissScan标记在APPConfig上面来指定扫描的包路径是什么。那既然这个注解标记在APPConfig上面了，那我们也就可以把@Import(SwissImportBeanDefinitionRegistrar.class)加到@SwissScan这个注解声明的上面，因为这是我们提供的一套，就没必要重复声明，都放在一起就好，并且他还提供了一个好处，那就是<strong>我们可以拿到@MapperScan里面用户定义的扫描路径</strong>。那现在我们就可以开始搭建扫描的逻辑了。</p>
+<p>在写死的SwissImportBeanDefinitionRegistrar下，我们开始定义：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">registerBeanDefinitions</span><span class="params">(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry, BeanNameGenerator importBeanNameGenerator)</span> &#123;</span><br><span class="line">    Map&lt;String, Object&gt; annotationAttributes = importingClassMetadata.getAnnotationAttributes(SwissScan.class.getName());</span><br><span class="line">    <span class="type">String</span> <span class="variable">path</span> <span class="operator">=</span> (String) annotationAttributes.get(<span class="string">&quot;value&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//下面是原先的逻辑</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>现在我们要进行包路径下的扫描了。我们完全可以借助Spring已经定义好的扫描器帮我们进行扫描，<strong>但是Spring定义好的扫描器只会扫描Bean对象，并不会扫描到接口</strong>。所以我们需要对扫描器进行一些改造。</p>
+<p>我们先定义一个自定义的扫描器SwissScanner，重写一些方法：（具体Spring底层扫描逻辑详见之后的手写Spring系列）</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SwissScanner</span> <span class="keyword">extends</span> <span class="title class_">ClassPathBeanDefinitionScanner</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SwissScanner</span><span class="params">(BeanDefinitionRegistry registry)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(registry);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="type">boolean</span> <span class="title function_">isCandidateComponent</span><span class="params">(AnnotatedBeanDefinition beanDefinition)</span> &#123;</span><br><span class="line">        <span class="comment">//改变扫描对象：扫描接口</span></span><br><span class="line">        <span class="keyword">return</span> beanDefinition.getMetadata().isInterface();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Set&lt;BeanDefinitionHolder&gt; <span class="title function_">doScan</span><span class="params">(String... basePackages)</span> &#123;</span><br><span class="line">        Set&lt;BeanDefinitionHolder&gt; beanDefinitionHolders = <span class="built_in">super</span>.doScan(basePackages);</span><br><span class="line">        <span class="comment">//注意：这里扫描出来的bean类型是原生的Mapper，如UserMapper，但是！接口是不能创建bean的，需要改为中介类型，也就是我们的FactoryBean类型去帮忙创建。</span></span><br><span class="line">        <span class="keyword">for</span> (BeanDefinitionHolder beanDefinitionHolder : beanDefinitionHolders) &#123;</span><br><span class="line">            <span class="type">BeanDefinition</span> <span class="variable">beanDefinition</span> <span class="operator">=</span> beanDefinitionHolder.getBeanDefinition();</span><br><span class="line">            <span class="comment">//我们需要先往原生构造器里面放入原生的mapper类型，对应之前我们解耦合时候的private Class classMapper注入；</span></span><br><span class="line">            beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(beanDefinition.getBeanClassName());</span><br><span class="line">            <span class="comment">//然后我们再把原生mapper类型换为我们的FactoryBean类型SwissFactoryBean。</span></span><br><span class="line">            beanDefinition.setBeanClassName(SwissFactoryBean.class.getName());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> beanDefinitionHolders;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>这么一来，我们的特定扫描器就构建好了，并且在扫描的同时就已经帮我们把BeanDefinition注册好了。回到ImportBeanDefinitionRegistrar，直接删除原先的逻辑,执行扫描即可：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">registerBeanDefinitions</span><span class="params">(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry, BeanNameGenerator importBeanNameGenerator)</span> &#123;</span><br><span class="line">    Map&lt;String, Object&gt; annotationAttributes = importingClassMetadata.getAnnotationAttributes(SwissScan.class.getName());</span><br><span class="line">    <span class="type">String</span> <span class="variable">path</span> <span class="operator">=</span> (String) annotationAttributes.get(<span class="string">&quot;value&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">SwissScanner</span> <span class="variable">swissScanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SwissScanner</span>(registry);</span><br><span class="line">    swissScanner.addIncludeFilter(<span class="keyword">new</span> <span class="title class_">TypeFilter</span>() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">match</span><span class="params">(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    swissScanner.scan(path);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>为什么要添加addIncludeFilter详见之后的手写Spring系列。</p>
+<p>到这里，我们构建的集成框架就实现完毕了，这就是mybatis和spring集成的方法。</p>
 
 		</div>
 
@@ -677,18 +622,18 @@
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
 			<div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> SQL窗口函数的使用</li>
+        <li><strong>标题:</strong> 手写Spring框架day4</li>
         <li><strong>作者:</strong> ylnxwlp</li>
         <li><strong>创建于
-                :</strong> 2025-06-17 20:00:00</li>
+                :</strong> 2025-10-04 20:45:13</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-09-10 22:32:15
+                    :</strong> 2025-10-05 22:54:05
             </li>
         
         <li>
-            <strong>链接:</strong> https://www.swissroll.today/2025/06/17/SQL窗口函数/
+            <strong>链接:</strong> https://www.swissroll.today/2025/10/04/手写Spring框架day4/
         </li>
         <li>
             <strong>
@@ -710,7 +655,7 @@
 		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
 			
 			<li class="tag-item mx-0.5">
-				<a href="/tags/SQL%E7%BC%96%E5%86%99/">#SQL编写</a>&nbsp;
+				<a href="/tags/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">#底层原理</a>&nbsp;
 			</li>
 			
 		</ul>
@@ -722,17 +667,29 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2025/10/01/%E6%89%8B%E5%86%99Spring%E6%A1%86%E6%9E%B6day1/">
+				<a class="prev" rel="prev" href="/2025/10/04/FactoryBean%EF%BC%9FBeanFactory%EF%BC%9FSpring%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E7%B1%BB/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">手写Spring框架Day1</span>
+						<span class="post-nav-title-item">FactoryBean？BeanFactory？Spring中的那些有意思的类</span>
 						<span class="post-nav-item">上一篇</span>
 					</span>
 				</a>
 			</div>
 			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/10/04/%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E2%80%94%E2%80%94%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E7%BA%A7%E7%BC%93%E5%AD%98%EF%BC%9F/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">循环依赖——为什么是三级缓存？</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
 			
 		</div>
 		
@@ -789,8 +746,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
-		<div class="page-title">SQL窗口函数的使用</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0%E7%9B%B8%E8%BE%83%E4%BA%8E%E6%99%AE%E9%80%9ASQL%EF%BC%8C%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C%EF%BC%9F"><span class="nav-text">窗口函数相较于普通SQL，有什么不同？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-text">窗口函数的基本使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%BB%83%E4%B9%A0%E5%85%B7%E4%BD%93%E4%BE%8B%E5%AD%90"><span class="nav-text">一个练习具体例子</span></a></li></ol>
+		<div class="page-title">手写Spring框架day4</div>
+		
 
 	</div>
 </div>
