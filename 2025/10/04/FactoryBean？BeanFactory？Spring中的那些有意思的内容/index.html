@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://github.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-10-04T14:19:59.000Z">
-<meta property="article:modified_time" content="2025-10-06T03:35:03.743Z">
+<meta property="article:modified_time" content="2025-10-07T10:53:55.327Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="底层原理">
 <meta name="twitter:card" content="summary">
@@ -448,15 +448,15 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -507,8 +507,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-10-06 11:35:03</span>
-            <span class="mobile">2025-10-06 11:35:03</span>
+            <span class="desktop">2025-10-07 18:53:55</span>
+            <span class="mobile">2025-10-07 18:53:55</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -546,12 +546,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>72 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.9k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>1 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>7 分钟</span>
         </span>
     
     
@@ -570,7 +570,53 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h3 id="BeanFactory和FactoryBean傻傻分不清？"><a href="#BeanFactory和FactoryBean傻傻分不清？" class="headerlink" title="BeanFactory和FactoryBean傻傻分不清？"></a>BeanFactory和FactoryBean傻傻分不清？</h3><h3 id="BeanDefinitionRegistryPostProcessor是什么？"><a href="#BeanDefinitionRegistryPostProcessor是什么？" class="headerlink" title="BeanDefinitionRegistryPostProcessor是什么？"></a>BeanDefinitionRegistryPostProcessor是什么？</h3><h3 id="BeanFactoryPostProcessor又是什么？"><a href="#BeanFactoryPostProcessor又是什么？" class="headerlink" title="BeanFactoryPostProcessor又是什么？"></a>BeanFactoryPostProcessor又是什么？</h3><h3 id="ImportBeanDefinitionRegistrar是做什么工作的？"><a href="#ImportBeanDefinitionRegistrar是做什么工作的？" class="headerlink" title="ImportBeanDefinitionRegistrar是做什么工作的？"></a>ImportBeanDefinitionRegistrar是做什么工作的？</h3><h3 id="Bean是线程安全的吗？"><a href="#Bean是线程安全的吗？" class="headerlink" title="Bean是线程安全的吗？"></a>Bean是线程安全的吗？</h3><h3 id="BeanDefinition的读取顺序是怎么样的？"><a href="#BeanDefinition的读取顺序是怎么样的？" class="headerlink" title="BeanDefinition的读取顺序是怎么样的？"></a>BeanDefinition的读取顺序是怎么样的？</h3><h3 id="AOP在Spring内的具体实现是怎么样的？仅是动态代理吗？"><a href="#AOP在Spring内的具体实现是怎么样的？仅是动态代理吗？" class="headerlink" title="AOP在Spring内的具体实现是怎么样的？仅是动态代理吗？"></a>AOP在Spring内的具体实现是怎么样的？仅是动态代理吗？</h3><h3 id="Spring-AOP和AspectJ的AOP有什么区别？"><a href="#Spring-AOP和AspectJ的AOP有什么区别？" class="headerlink" title="Spring AOP和AspectJ的AOP有什么区别？"></a>Spring AOP和AspectJ的AOP有什么区别？</h3>
+			<h3 id="BeanFactory和FactoryBean傻傻分不清？"><a href="#BeanFactory和FactoryBean傻傻分不清？" class="headerlink" title="BeanFactory和FactoryBean傻傻分不清？"></a>BeanFactory和FactoryBean傻傻分不清？</h3><p>BeanFactory是Spring框架的核心接口之一，它定义了Spring容器的基本行为，负责管理Bean的生命周期、配置元数据和依赖注入。BeanFactory的主要功能包括：</p>
+<p>Bean的实例化和管理：BeanFactory负责创建、初始化和管理Bean的生命周期。它会根据配置文件中定义的Bean定义来创建Bean的实例。</p>
+<p>依赖注入：BeanFactory负责解决Bean之间的依赖关系，确保每个Bean都能获取它所依赖的其他Bean。</p>
+<p>配置元数据的管理：BeanFactory会读取和管理应用程序的配置元数据，通常以XML、注解或Java配置的方式定义Bean及其属性。</p>
+<p>延迟初始化：BeanFactory支持延迟初始化，即只有在需要时才创建Bean实例。</p>
+<p>AOP支持：BeanFactory支持面向切面编程（AOP），允许在Bean的生命周期中应用切面。</p>
+<p>BeanFactory是Spring IOC容器的基础，但它通常不会直接使用，而是通过其更高级的实现来使用，如ApplicationContext。</p>
+<p>FactoryBean是一个特殊的Bean，它是一个工厂类的接口，负责创建其他Bean的实例。FactoryBean的主要功能包括：</p>
+<p>自定义Bean的创建过程：FactoryBean允许您自定义Bean的创建逻辑。您可以编写一个实现FactoryBean接口的类，重写getObject方法，以自定义Bean的创建逻辑。</p>
+<p>懒加载：FactoryBean可以控制Bean的懒加载。如果您的FactoryBean返回一个代理对象，它可以推迟实际Bean的创建，直到被请求时。</p>
+<p>Bean的包装：FactoryBean可以用于包装其他Bean。您可以在FactoryBean中创建一个Bean的代理，以便在Bean的生命周期中添加额外的行为。</p>
+<p>处理复杂逻辑：FactoryBean常用于创建复杂的Bean实例，例如连接池、远程服务代理等。它们允许您在Bean的创建过程中执行复杂的逻辑。</p>
+<p>BeanFactory 和 FactoryBean区别</p>
+<p>用途：<br>BeanFactory是Spring IoC容器的核心接口，负责管理Bean的生命周期和依赖注入。<br>FactoryBean是一个特殊的Bean，充当其他Bean的工厂，用于自定义Bean的创建过程。</p>
+<p>创建对象：<br>BeanFactory负责创建Bean对象。<br>FactoryBean是一个Bean，它的实例本身是一个工厂，负责创建其他Bean的实例。</p>
+<p>自定义性：<br>BeanFactory通常不需要自定义实现，而是由Spring框架提供的。<br>FactoryBean需要自定义实现，您需要编写一个类，实现FactoryBean接口，并重写getObject方法来定义Bean的创建逻辑。</p>
+<p>懒加载：<br>BeanFactory默认支持懒加载，可以配置Bean的延迟初始化。<br>FactoryBean可以通过返回代理对象来实现懒加载，它控制何时创建实际的Bean实例。</p>
+<p>简而言之，BeanFactory是Spring IoC容器的核心接口，负责管理Bean的生命周期和依赖注入，大多数的Bean对象，包括Spring中内置的Bean对象和应用程序自定义的Bean对象，都是由BeanFactory创建。而FactoryBean是一个特殊的Bean，它充当其他Bean的工厂，用于自定义Bean的创建过程，支持懒加载、包装和代理，以及处理复杂的逻辑。</p>
+<p>Bean可以由两种不同的方式创建：</p>
+<p>由BeanFactory创建：大多数Bean是由Spring的BeanFactory或ApplicationContext容器直接创建的，这些Bean是普通的Java对象，不需要实现FactoryBean接口。当您在Spring配置中定义一个Bean时，通常是直接指定该Bean的类，并且Spring容器会根据类的信息来实例化和管理Bean的生命周期。这些Bean不需要实现FactoryBean接口。</p>
+<p>由FactoryBean创建：有些特殊类型的Bean是由实现了FactoryBean接口的类创建的。FactoryBean是一种用于创建其他Bean的工厂，它允许自定义Bean的创建过程。这些FactoryBean实现类实现了FactoryBean接口，重写了getObject方法，用于定义Bean的创建逻辑。</p>
+<h3 id="BeanDefinitionRegistryPostProcessor是什么？"><a href="#BeanDefinitionRegistryPostProcessor是什么？" class="headerlink" title="BeanDefinitionRegistryPostProcessor是什么？"></a>BeanDefinitionRegistryPostProcessor是什么？</h3><p>BeanDefinitionRegistryPostProcessor是Spring框架中的一个扩展接口，用于在Spring容器<strong>加载bean定义（BeanDefinition）之后、但在所有常规的BeanFactoryPostProcessor执行之前，对bean定义注册表（BeanDefinitionRegistry）进行进一步的修改或注册额外的bean定义</strong>。</p>
+<p>接口定义如下：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">BeanDefinitionRegistryPostProcessor</span> <span class="keyword">extends</span> <span class="title class_">BeanFactoryPostProcessor</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">postProcessBeanDefinitionRegistry</span><span class="params">(BeanDefinitionRegistry registry)</span> <span class="keyword">throws</span> BeansException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>新增了一个方法postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry)，可以动态注册bean：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyBeanDefinitionRegistryPostProcessor</span> <span class="keyword">implements</span> <span class="title class_">BeanDefinitionRegistryPostProcessor</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postProcessBeanDefinitionRegistry</span><span class="params">(BeanDefinitionRegistry registry)</span> <span class="keyword">throws</span> BeansException &#123;</span><br><span class="line">        <span class="comment">// 动态注册一个bean</span></span><br><span class="line">        <span class="type">BeanDefinitionBuilder</span> <span class="variable">builder</span> <span class="operator">=</span> BeanDefinitionBuilder.genericBeanDefinition(MyService.class);</span><br><span class="line">        <span class="type">AbstractBeanDefinition</span> <span class="variable">beanDefinition</span> <span class="operator">=</span> builder.getBeanDefinition();</span><br><span class="line">        registry.registerBeanDefinition(<span class="string">&quot;myDynamicService&quot;</span>, beanDefinition);</span><br><span class="line">        System.out.println(<span class="string">&quot;动态注册了bean: myDynamicService&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postProcessBeanFactory</span><span class="params">(ConfigurableListableBeanFactory beanFactory)</span> <span class="keyword">throws</span> BeansException &#123;</span><br><span class="line">        <span class="comment">// 可进行进一步处理</span></span><br><span class="line">        System.out.println(<span class="string">&quot;BeanFactory 后处理&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="BeanFactoryPostProcessor又是什么？"><a href="#BeanFactoryPostProcessor又是什么？" class="headerlink" title="BeanFactoryPostProcessor又是什么？"></a>BeanFactoryPostProcessor又是什么？</h3><p>用于在Spring容器<strong>实例化任何bean之前，对bean的定义（BeanDefinition）进行修改或处理</strong>。</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyBeanFactoryPostProcessor</span> <span class="keyword">implements</span> <span class="title class_">BeanFactoryPostProcessor</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postProcessBeanFactory</span><span class="params">(ConfigurableListableBeanFactory beanFactory)</span> <span class="keyword">throws</span> BeansException &#123;</span><br><span class="line">        <span class="type">BeanDefinition</span> <span class="variable">bd</span> <span class="operator">=</span> beanFactory.getBeanDefinition(<span class="string">&quot;userService&quot;</span>);</span><br><span class="line">        bd.setLazyInit(<span class="literal">true</span>); <span class="comment">// 设置为懒加载</span></span><br><span class="line">        bd.getPropertyValues().add(<span class="string">&quot;defaultRole&quot;</span>, <span class="string">&quot;USER&quot;</span>); <span class="comment">// 添加默认属性</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="ImportBeanDefinitionRegistrar是做什么工作的？"><a href="#ImportBeanDefinitionRegistrar是做什么工作的？" class="headerlink" title="ImportBeanDefinitionRegistrar是做什么工作的？"></a>ImportBeanDefinitionRegistrar是做什么工作的？</h3><p>ImportBeanDefinitionRegistrar主要用于在Spring容器启动过程中<strong>动态地向容器中注册Bean定义</strong>（BeanDefinition）。通常配合@Import注解一起使用。</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@Import(MyImportBeanDefinitionRegistrar.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AppConfig</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>接口的定义是这样：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ImportBeanDefinitionRegistrar</span> &#123;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">void</span> <span class="title function_">registerBeanDefinitions</span><span class="params">(</span></span><br><span class="line"><span class="params">            AnnotationMetadata importingClassMetadata,</span></span><br><span class="line"><span class="params">            BeanDefinitionRegistry registry)</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">void</span> <span class="title function_">registerBeanDefinitions</span><span class="params">(</span></span><br><span class="line"><span class="params">            AnnotationMetadata importingClassMetadata,</span></span><br><span class="line"><span class="params">            BeanDefinitionRegistry registry,</span></span><br><span class="line"><span class="params">            BeanNameGenerator importBeanNameGenerator)</span> &#123;</span><br><span class="line">        registerBeanDefinitions(importingClassMetadata, registry);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>importingClassMetadata：表示使用@Import的那个配置类的元数据（如类名、注解信息等）。</p>
+<p>registry：用于注册BeanDefinition的注册表。</p>
+<h3 id="Bean是线程安全的吗？"><a href="#Bean是线程安全的吗？" class="headerlink" title="Bean是线程安全的吗？"></a>Bean是线程安全的吗？</h3><p>当然不是。如果这个bean中有成员变量，在读写的时候就会发生线程不安全的问题。</p>
+<p>解决方法也有很多，比如ThreadLocal，变量放入方法，多例bean，加锁等等。</p>
+<h3 id="BeanDefinition的注册顺序由什么来决定？"><a href="#BeanDefinition的注册顺序由什么来决定？" class="headerlink" title="BeanDefinition的注册顺序由什么来决定？"></a>BeanDefinition的注册顺序由什么来决定？</h3><p>主要是由注解（配置）的解析顺序来决定：</p>
+<p>1、@Configuration<br>2、@Component<br>3、@Import：导入普通类<br>4、@Bean<br>5、@Import—导入的是实现了ImportBeanDefinitionRegistrar的类<br>6、BeanDefinitionRegistryPostProcessor</p>
+<h3 id="AOP在Spring内的具体实现是怎么样的？仅是动态代理吗"><a href="#AOP在Spring内的具体实现是怎么样的？仅是动态代理吗" class="headerlink" title="AOP在Spring内的具体实现是怎么样的？仅是动态代理吗"></a>AOP在Spring内的具体实现是怎么样的？仅是动态代理吗</h3><p>Aop的实现大致分为三大步：</p>
+<p>JavaConfig当@EnableAspectJAutoProxy 会通过@Import注册一个BeanPostProcessor处理AOP</p>
+<p>解析切面：在Bean创建之前的第一个Bean后置处理器会去解析切面（解析切面中通知、切入点，一个通知就会解析成一个advisor(通知、切入点)）</p>
+<p>创建动态代理：正常的Bean初始化后调用BeanPostProcessor拿到之前缓存的advisor，再通过advisor中pointcut判断当前Bean是否被切入点表达式匹配，如果匹配，就会为Bean创建动态代理（创建方式1.jdk动态代理2.cglib）。</p>
+<p>调用：拿到动态代理对象，调用方法就会判断当前方法是否增强的方法，就会通过调用链的方式依次去执行通知。</p>
+<h3 id="Spring-AOP和AspectJ的AOP有什么区别？"><a href="#Spring-AOP和AspectJ的AOP有什么区别？" class="headerlink" title="Spring AOP和AspectJ的AOP有什么区别？"></a>Spring AOP和AspectJ的AOP有什么区别？</h3><p>我们常常在我们想要使用Spring AOP的时候，会去引入一个依赖：AspectJ。这个包为什么要引入呢？</p>
+<p>实际上，AspectJ这个的代理和AOP代理不一样，他是属于<strong>静态代理</strong>，也就是编译时织入。这样一来，AspectJ的性能就会非常好，因为运行的时候就会没有额外开销。所以AspectJ是一种完全的AOP编程解决方案。</p>
+<p>但SpringAOP就不一样了，他不会去追求完整的解决方案；而是致力于企业级开发最普遍的需求。所以，<strong>SpringAOP仅仅只是使用到了AspectJ里面的切点切面表达式的解析和匹配，并生成动态代理</strong>。但也因为这样，Spring AOP的性能也会比较差一些。</p>
+
 		</div>
 
 		
@@ -584,7 +630,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-10-06 11:35:03
+                    :</strong> 2025-10-07 18:53:55
             </li>
         
         <li>
@@ -702,7 +748,7 @@
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
 		<div class="page-title">FactoryBean？BeanFactory？Spring中的那些有意思的内容</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#BeanFactory%E5%92%8CFactoryBean%E5%82%BB%E5%82%BB%E5%88%86%E4%B8%8D%E6%B8%85%EF%BC%9F"><span class="nav-text">BeanFactory和FactoryBean傻傻分不清？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeanDefinitionRegistryPostProcessor%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">BeanDefinitionRegistryPostProcessor是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeanFactoryPostProcessor%E5%8F%88%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">BeanFactoryPostProcessor又是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImportBeanDefinitionRegistrar%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%9F"><span class="nav-text">ImportBeanDefinitionRegistrar是做什么工作的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%90%97%EF%BC%9F"><span class="nav-text">Bean是线程安全的吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeanDefinition%E7%9A%84%E8%AF%BB%E5%8F%96%E9%A1%BA%E5%BA%8F%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="nav-text">BeanDefinition的读取顺序是怎么样的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP%E5%9C%A8Spring%E5%86%85%E7%9A%84%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84%EF%BC%9F%E4%BB%85%E6%98%AF%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E5%90%97%EF%BC%9F"><span class="nav-text">AOP在Spring内的具体实现是怎么样的？仅是动态代理吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-AOP%E5%92%8CAspectJ%E7%9A%84AOP%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">Spring AOP和AspectJ的AOP有什么区别？</span></a></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#BeanFactory%E5%92%8CFactoryBean%E5%82%BB%E5%82%BB%E5%88%86%E4%B8%8D%E6%B8%85%EF%BC%9F"><span class="nav-text">BeanFactory和FactoryBean傻傻分不清？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeanDefinitionRegistryPostProcessor%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">BeanDefinitionRegistryPostProcessor是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeanFactoryPostProcessor%E5%8F%88%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">BeanFactoryPostProcessor又是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImportBeanDefinitionRegistrar%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%9F"><span class="nav-text">ImportBeanDefinitionRegistrar是做什么工作的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%90%97%EF%BC%9F"><span class="nav-text">Bean是线程安全的吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeanDefinition%E7%9A%84%E6%B3%A8%E5%86%8C%E9%A1%BA%E5%BA%8F%E7%94%B1%E4%BB%80%E4%B9%88%E6%9D%A5%E5%86%B3%E5%AE%9A%EF%BC%9F"><span class="nav-text">BeanDefinition的注册顺序由什么来决定？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP%E5%9C%A8Spring%E5%86%85%E7%9A%84%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84%EF%BC%9F%E4%BB%85%E6%98%AF%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E5%90%97"><span class="nav-text">AOP在Spring内的具体实现是怎么样的？仅是动态代理吗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-AOP%E5%92%8CAspectJ%E7%9A%84AOP%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">Spring AOP和AspectJ的AOP有什么区别？</span></a></li></ol>
 
 	</div>
 </div>
@@ -731,11 +777,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 8 篇文章
+                        共撰写了 9 篇文章
                     </span>
                     
                         <span>
-                            共 16.6k 字
+                            共 18.5k 字
                         </span>
                     
                 </p>
