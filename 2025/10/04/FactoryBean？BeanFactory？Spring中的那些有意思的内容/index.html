@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://github.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-10-04T14:19:59.000Z">
-<meta property="article:modified_time" content="2025-10-07T10:53:55.327Z">
+<meta property="article:modified_time" content="2025-10-26T08:16:30.727Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="底层原理">
 <meta name="twitter:card" content="summary">
@@ -507,8 +507,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-10-07 18:53:55</span>
-            <span class="mobile">2025-10-07 18:53:55</span>
+            <span class="desktop">2025-10-26 16:16:30</span>
+            <span class="mobile">2025-10-26 16:16:30</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -578,18 +578,18 @@
 <p>AOP支持：BeanFactory支持面向切面编程（AOP），允许在Bean的生命周期中应用切面。</p>
 <p>BeanFactory是Spring IOC容器的基础，但它通常不会直接使用，而是通过其更高级的实现来使用，如ApplicationContext。</p>
 <p>FactoryBean是一个特殊的Bean，它是一个工厂类的接口，负责创建其他Bean的实例。FactoryBean的主要功能包括：</p>
-<p>自定义Bean的创建过程：FactoryBean允许您自定义Bean的创建逻辑。您可以编写一个实现FactoryBean接口的类，重写getObject方法，以自定义Bean的创建逻辑。</p>
-<p>懒加载：FactoryBean可以控制Bean的懒加载。如果您的FactoryBean返回一个代理对象，它可以推迟实际Bean的创建，直到被请求时。</p>
-<p>Bean的包装：FactoryBean可以用于包装其他Bean。您可以在FactoryBean中创建一个Bean的代理，以便在Bean的生命周期中添加额外的行为。</p>
-<p>处理复杂逻辑：FactoryBean常用于创建复杂的Bean实例，例如连接池、远程服务代理等。它们允许您在Bean的创建过程中执行复杂的逻辑。</p>
+<p>自定义Bean的创建过程：FactoryBean允许我们自定义Bean的创建逻辑。我们可以编写一个实现FactoryBean接口的类，重写getObject方法，以自定义Bean的创建逻辑。</p>
+<p>懒加载：FactoryBean可以控制Bean的懒加载。如果我们的FactoryBean返回一个代理对象，它可以推迟实际Bean的创建，直到被请求时。</p>
+<p>Bean的包装：FactoryBean可以用于包装其他Bean。我们可以在FactoryBean中创建一个Bean的代理，以便在Bean的生命周期中添加额外的行为。</p>
+<p>处理复杂逻辑：FactoryBean常用于创建复杂的Bean实例，例如连接池、远程服务代理等。它们允许我们在Bean的创建过程中执行复杂的逻辑。</p>
 <p>BeanFactory 和 FactoryBean区别</p>
 <p>用途：<br>BeanFactory是Spring IoC容器的核心接口，负责管理Bean的生命周期和依赖注入。<br>FactoryBean是一个特殊的Bean，充当其他Bean的工厂，用于自定义Bean的创建过程。</p>
 <p>创建对象：<br>BeanFactory负责创建Bean对象。<br>FactoryBean是一个Bean，它的实例本身是一个工厂，负责创建其他Bean的实例。</p>
-<p>自定义性：<br>BeanFactory通常不需要自定义实现，而是由Spring框架提供的。<br>FactoryBean需要自定义实现，您需要编写一个类，实现FactoryBean接口，并重写getObject方法来定义Bean的创建逻辑。</p>
+<p>自定义性：<br>BeanFactory通常不需要自定义实现，而是由Spring框架提供的。<br>FactoryBean需要自定义实现，我们需要编写一个类，实现FactoryBean接口，并重写getObject方法来定义Bean的创建逻辑。</p>
 <p>懒加载：<br>BeanFactory默认支持懒加载，可以配置Bean的延迟初始化。<br>FactoryBean可以通过返回代理对象来实现懒加载，它控制何时创建实际的Bean实例。</p>
 <p>简而言之，BeanFactory是Spring IoC容器的核心接口，负责管理Bean的生命周期和依赖注入，大多数的Bean对象，包括Spring中内置的Bean对象和应用程序自定义的Bean对象，都是由BeanFactory创建。而FactoryBean是一个特殊的Bean，它充当其他Bean的工厂，用于自定义Bean的创建过程，支持懒加载、包装和代理，以及处理复杂的逻辑。</p>
 <p>Bean可以由两种不同的方式创建：</p>
-<p>由BeanFactory创建：大多数Bean是由Spring的BeanFactory或ApplicationContext容器直接创建的，这些Bean是普通的Java对象，不需要实现FactoryBean接口。当您在Spring配置中定义一个Bean时，通常是直接指定该Bean的类，并且Spring容器会根据类的信息来实例化和管理Bean的生命周期。这些Bean不需要实现FactoryBean接口。</p>
+<p>由BeanFactory创建：大多数Bean是由Spring的BeanFactory或ApplicationContext容器直接创建的，这些Bean是普通的Java对象，不需要实现FactoryBean接口。当我们在Spring配置中定义一个Bean时，通常是直接指定该Bean的类，并且Spring容器会根据类的信息来实例化和管理Bean的生命周期。这些Bean不需要实现FactoryBean接口。</p>
 <p>由FactoryBean创建：有些特殊类型的Bean是由实现了FactoryBean接口的类创建的。FactoryBean是一种用于创建其他Bean的工厂，它允许自定义Bean的创建过程。这些FactoryBean实现类实现了FactoryBean接口，重写了getObject方法，用于定义Bean的创建逻辑。</p>
 <h3 id="BeanDefinitionRegistryPostProcessor是什么？"><a href="#BeanDefinitionRegistryPostProcessor是什么？" class="headerlink" title="BeanDefinitionRegistryPostProcessor是什么？"></a>BeanDefinitionRegistryPostProcessor是什么？</h3><p>BeanDefinitionRegistryPostProcessor是Spring框架中的一个扩展接口，用于在Spring容器<strong>加载bean定义（BeanDefinition）之后、但在所有常规的BeanFactoryPostProcessor执行之前，对bean定义注册表（BeanDefinitionRegistry）进行进一步的修改或注册额外的bean定义</strong>。</p>
 <p>接口定义如下：</p>
@@ -630,7 +630,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-10-07 18:53:55
+                    :</strong> 2025-10-26 16:16:30
             </li>
         
         <li>
@@ -781,7 +781,7 @@
                     </span>
                     
                         <span>
-                            共 18.9k 字
+                            共 19.1k 字
                         </span>
                     
                 </p>
